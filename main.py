@@ -27,3 +27,4 @@ while True:
     fire.setHumidity(h)
     fire.setBrightness(l)    
     general.control_Light(bool(fire.getLight()))
+    general.control_Fan(bool(fire.getFan()))
