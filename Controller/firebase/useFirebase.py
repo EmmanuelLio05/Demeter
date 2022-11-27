@@ -18,12 +18,15 @@ class useFirebase:
     def setBrightness(self,nBrightness):
         firebase.put("telemetry/temperature", nBrightness, bg=0)
 
+    def setWater(self,nWater):
+        firebase.put("control/water", nWater, bg=0)
+
     def getFan(self):
-        firebase.get.get("control/fan", "bFan", bg=0)
+        firebase.get("control/fan", "bFan", bg=0)
         return firebase.bFan
 
     def getWater(self):
-        firebase.get.get("control/fan", "bWater", bg=0)
+        firebase.get("control/fan", "bWater", bg=0)
         return firebase.bWater
 
     def getLight(self):

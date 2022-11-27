@@ -2,6 +2,8 @@ import sys
 import network
 from machine import Pin
 import time
+sys.path.insert(0, '/Controller/firebase')
+from useFirebase import useFirebase
 
 LIGHT_TOPIC = 'demeter.control.light'
 WATER_TOPIC = 'demeter.control.water'
@@ -14,7 +16,8 @@ RNG_LIGHT_END = (1,1,1,19,59,59,0,0)
 RNG_FAN_START = (1,1,1,15,0,0,0,0)
 RNG_FAN_END = (1,1,1,17,59,59,0,0)
 
-pWater = Pin(2,mode=Pin.OUT, value=1)
+pWater1 = Pin(12,mode=Pin.OUT)
+pWater2 = Pin(13,mode=Pin.OUT)
 pFan1 = Pin(26,mode=Pin.OUT)
 pFan2 = Pin(27,mode=Pin.OUT)
 pLight = Pin(25,mode=Pin.OUT, value=1)
@@ -47,3 +50,12 @@ def control_Fan(bHermes_Fan):
                 return
     pFan1.off()
     pFan2.off()
+
+def control_Water(nHermes_Water):
+    fire = useFirebase()
+    pWater1.on()
+    pWater2.off()
+    time.sleep(nHermes_Water)
+    pWater1.off()
+    pWater2.off()
+    fire.setBrightness(0)

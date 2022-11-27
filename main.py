@@ -25,6 +25,6 @@ while True:
     l=ldr.getLight()
     fire.setTemperature(t)
     fire.setHumidity(h)
-    fire.setBrightness(l)    
+    fire.setBrightness(l)
     general.control_Light(bool(fire.getLight()))
     general.control_Fan(bool(fire.getFan()))
