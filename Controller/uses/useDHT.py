@@ -13,14 +13,14 @@ class useDHT:
         while b:
             try:
                 self.sensor.measure() #Mide
-                sleep(2)
+                sleep(2) #Duerme dos segundos
                 b = False
             except Exception as e:
                 print(str(e))
     
-    def getTemperature(self):
+    def getTemperature(self): #Retorna temperatura
         return self.sensor.temperature()
 
-    def getHumidity(self):
+    def getHumidity(self): #Retorna humedad
         hum = self.sensor.humidity()
         return hum
